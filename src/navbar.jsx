@@ -8,9 +8,11 @@ const Navbar = () => {
     const [showLinks, setShowLinks] = useState(false)
     const navLinksRef = useRef(null)
     const linksRef = useRef(null)
+    const [toggleBtn,setToggleBtn] = useState(false)
     
     const toggle = () => {
-       setShowLinks(!showLinks)
+        setShowLinks(!showLinks)
+        setToggleBtn(!toggleBtn)
     }
 
     const linkStyles = {
@@ -23,8 +25,14 @@ const Navbar = () => {
                      <div className="nav-header">
                      <a href="#home" className="nav-logo">
                              <img src={ logo} alt="tonmoy" />
-                     </a>
-                        <button type="button" className="btn nav-btn" onClick={toggle}><i className="fa-solid fa-bars"></i></button>
+                        </a>
+                        
+                        { toggleBtn ?
+                            <button type="button" className="btn nav-btn" onClick={toggle}><i className="fa-solid fa-bars fa-rotate-270"></i></button> 
+                        :
+                              <button type="button" className="btn nav-btn" onClick={toggle}><i className="fa-solid fa-bars"></i></button>
+                        }
+                        
                     </div>
                     <div className='nav-links' ref={navLinksRef} style={linkStyles}>
                         <ul className="links" ref={linksRef}>
